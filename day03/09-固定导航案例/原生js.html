@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8" />
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      vertical-align: top;
+    }
+
+    .main {
+      margin: 0 auto;
+      width: 1000px;
+      padding-top: 10px;
+    }
+
+    .fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top" id="topPart">
+    <img src="images/top.png" alt="" />
+  </div>
+  <div class="nav" id="navBar">
+    <img src="images/nav.png" alt="" />
+  </div>
+  <div class="main" id="mainPart">
+    <img src="images/main.png" alt="" />
+  </div>
+  <script>
+    //向上的滚动条的高度是否大于等于navBar的高度，有的话就给navBar设置固定定位 ，
+    var oNavBar = document.getElementById("navBar");
+    var oMainPart = document.getElementById("mainPart");
+
+    window.onscroll = function () {
+      // Window.scrollY
+      // 概述
+      // 返回文档在垂直方向已滚动的像素值。
+      // 为了跨浏览器兼容，请使用 window.pageYOffset 代替 window.scrollY。
+      console.log(window.pageYOffset);
+      if (window.pageYOffset >= oNavBar.offsetHeight) {
+        oNavBar.classList.add("fixed");
+        //固定定位脱离文档流，所以防止下面的盒子突然上移，所以给mainPart添加margin-top等于navBar的高度
+        oMainPart.style.marginTop = oNavBar.offsetHeight + 'px';
+      } else {
+        oNavBar.classList.remove("fixed");
+        oMainPart.style.marginTop = 0 + 'px';
+      }
+    }
+
+    //当向上的滚动条的高度小于有navBar的高度，把navBar的固定定位取消，mainPart添加margin-top等于0
+  </script>
+</body>
+
+</html>

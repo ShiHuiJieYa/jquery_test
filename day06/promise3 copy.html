@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		//宏[p1 p2]
+		//
+		//微[] 
+		//333 promise对象  222 报错
+		// async function fn() { //async返回一个promise对象
+		// 	console.log("333");
+		// 	const re2 = await new Promise((resolve, reject) => { //p1
+		// 		//awit 的promise对象的状态不变为成功后面的代码不会执行、
+		// 		setTimeout(function () { //p2
+		// 			console.log(222);
+		// 			reject("heng")
+		// 		}, 2000)
+		// 	})
+
+		// 	//此后代码永远不会执行
+		// 	console.log(111);
+		// 	console.log(re2);
+		// 	return "hello"; //返回成功结果值
+		// }
+		// const re = fn(); //promise对象
+		// re.catch((error) => {
+		// 	console.log(error)
+		// }) //解决await的reject状态报错
+		// re.then((data) => {
+		// 	console.log(data)
+		// }) //data是成功结果 函数返回值
+		// console.log(re);
+
+
+		async function a() {
+
+
+		}
+		let res = a();
+		console.log(res);
+		res.then((data) => {
+
+			console.log(data);
+		})
+	</script>
+</body>
+
+</html>

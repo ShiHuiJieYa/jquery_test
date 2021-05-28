@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8" />
+  <title></title>
+  <link rel="stylesheet" href="checkDemo.css" />
+</head>
+
+<body>
+  <div class="wrap">
+    <div>
+      <input type="button" value="添加数据" id="j_btnAddData" class="btnAdd" />
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>课程名称</th>
+          <th>所属学院</th>
+          <th>已学会</th>
+        </tr>
+      </thead>
+      <tbody id="j_tb">
+        <tr>
+          <td>JavaScript</td>
+          <td>前端学院</td>
+          <td><a href="javascript:;" class="get">GET</a></td>
+        </tr>
+        <tr>
+          <td>css</td>
+          <td>前端学院</td>
+          <td><a href="javascript:;" class="get">GET</a></td>
+        </tr>
+        <tr>
+          <td>html</td>
+          <td>前端学院</td>
+          <td><a href="javascript:;" class="get">GET</a></td>
+        </tr>
+        <tr>
+          <td>jQuery</td>
+          <td>前端学院</td>
+          <td><a href="javascript:;" class="get">GET</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="j_mask" class="mask"></div>
+  <div id="j_formAdd" class="form-add">
+    <div class="form-add-title">
+      <span>添加数据</span>
+
+      <div id="j_hideFormAdd">x</div>
+    </div>
+    <div class="form-item">
+      <label class="lb" for="j_txtLesson">课程名称：</label>
+      <input class="txt" type="text" id="j_txtLesson" placeholder="请输入课程名称" />
+    </div>
+    <div class="form-item">
+      <label class="lb" for="j_txtBelSch">所属学院：</label>
+      <input class="txt" type="text" id="j_txtBelSch" placeholder="请输入所属学院" />
+    </div>
+    <div class="form-submit">
+      <input type="button" value="添加" id="j_btnAdd" />
+    </div>
+  </div>
+  <script src="./jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //当点击j_btnAddData时j_mask，j_formAdd显示
+      $('#j_btnAddData').click(function () {
+        $('#j_mask').show();
+        $('#j_formAdd').show();
+
+      })
+
+      //当点击添加按钮j_btnAdd的时候获取到j_txtLesson、j_txtBelSch值
+      console.log($('#j_btnAdd'));
+      $('#j_btnAdd').click(function () {
+        console.log(1)
+        var Lesson = $('#j_txtLesson').val().trim();
+        var BelSch = $('#j_txtBelSch').val().trim();
+
+        //判断输入的值是否为空字符串 也可能能输入的是空格 就先去空格然后看是否为空字符串
+        if (!Lesson || !BelSch) {
+
+          return;
+        }
+        //把获取到的值填入j_tb后面，先拼接字符串
+        var arr = [];
+        // <tr>
+        //   <td>jQuery</td>
+        //   <td>前端学院</td>
+        //   <td><a href="javascript:;" class="get">GET</a></td>
+        // </tr>
+        arr.push('<tr>');
+        arr.push('<td>' + Lesson + '</td>');
+        arr.push('<td>' + BelSch + '</td>');
+        arr.push('<td><a href="javascript:;" class="get">GET</a></td> </tr>');
+        //把数组转为字符串 arr.join('');
+        //把获取到的值填入j_tb后面
+        $('#j_tb').append(arr.join(''));
+        //把j_mask，j_formAdd隐藏
+        $('#j_mask').hide();
+        $('#j_formAdd').hide();
+      })
+
+
+      //先设置x按钮,点击隐藏
+      $('#j_hideFormAdd').click(function () {
+        $('#j_mask').hide();
+        $('#j_formAdd').hide();
+      })
+
+
+      //给tbody设置点击事件wei  使用的是事件委托来
+      $('#j_tb').click(function (e) {
+        if (e.target.nodeName === 'A' && $(e.target).hasClass('get')) {
+          $(e.target).parent().parent().remove();
+        }
+
+      })
+    })
+  </script>
+</body>
+
+</html>

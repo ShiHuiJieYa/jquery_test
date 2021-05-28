@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class</title>
+</head>
+
+<body>
+    <script>
+        class Person {
+
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            say() {
+                console.log("你好" + this.name);
+            }
+        }
+
+        class Stuent extends Person {
+
+            constructor(name, age, sex) {
+                super(name, age);
+                this.sex = sex;
+            }
+
+            add() {
+
+                console.log(this.name + "的性别是" + this.sex)
+            }
+        }
+
+        let s1 = new Stuent('zs', 18, '男')
+        console.log(s1)
+    </script>
+</body>
+
+</html>

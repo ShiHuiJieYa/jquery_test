@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8" />
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      vertical-align: top;
+    }
+
+    .main {
+      margin: 0 auto;
+      width: 1000px;
+      padding-top: 10px;
+    }
+
+    .fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top" id="topPart">
+    <img src="images/top.png" alt="" />
+  </div>
+  <div class="nav" id="navBar">
+    <img src="images/nav.png" alt="" />
+  </div>
+  <div class="main" id="mainPart">
+    <img src="images/main.png" alt="" />
+  </div>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //当滚动条到达topPart高度时 给navBar加上定位
+      $(window).scroll(function () { //监听浏览器滚动事件
+
+        if ($(window).scrollTop() >= $('#topPart').height()) {
+
+          $('#navBar').addClass('fixed'); //因为fixed脱离文档流 给下面的mainPart设置一个margin-top等于navBar的高度
+          $('#mainPart').css({
+            marginTop: $('#navBar').height(),
+          })
+        } else {
+
+          //记得把fixed取消，还有margin-top归零
+          $('#navBar').removeClass('fixed'); //因为fixed脱离文档流 给下面的mainPart设置一个margin-top等于navBar的高度
+          $('#mainPart').css({
+            marginTop: 0,
+          })
+        }
+
+      })
+    })
+  </script>
+</body>
+
+</html>

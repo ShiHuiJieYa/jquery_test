@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // console.log(a);
+        // if(true){
+
+        //     let a=10
+        // }
+
+        // let a=10;
+        // a=20;
+        // let a=30;//不能重复声明一个变量
+        // console.log(a)
+
+
+        // let arr=[a,b,c,d]=[1,2,3,4]
+        // console.log(a,b,c,d)
+
+
+        // let arr=[1,2];
+        // let[a,b]=arr;
+        // console.log(a,b)
+
+        // let{foo,hoo}={foo:"hello",hoo:"world"};
+        // console.log(foo,hoo)
+
+
+        // let a=1,b=2;
+        // console.log({a:a,b:b})
+        // 如果对象的key和value是一样的，可以简写
+        // console.log({a,b})
+
+        // let{foo:c,hoo:d}={foo:1,hoo:2};
+        // console.log(foo,hoo)//报错因为foo名为c hoo改名为d
+        //  console.log(c,d)
+
+
+        // let obj={a:1,b:[2,3,4]};
+        // //  let{a,b:[b1,b2,b3]}=obj;
+        // // console.log(a,b1,b2,b3)
+        // let{a,b}=obj
+        // console.log(a,b)
+
+        // function fn(){
+
+        //     return{foo:"hello",hoo:"world"};
+        // }
+        // let{foo}=fn();
+        // console.log(foo);
+        // function fn2({
+        //     x,
+        //     y,
+        //     z
+        // }) {
+
+        //     console.log(x, y, z)
+        // }
+        // fn2({
+        //     y: 2,
+        //     x: 1,
+        //     z: 3
+        // });
+        // 
+        var arr3 = ["a", "b", "c", "d", "e", "f"];
+        arr3.splice(2, 0, "g", "h"); //无论是否删除，都会把第三个参数以后的所有参数 按顺序放在第一个参数下标标记的位置
+        console.log(arr3);
+    </script>
+</body>
+
+</html>

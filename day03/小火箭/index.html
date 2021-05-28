@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body {
+      height: 8000px;
+    }
+
+    a {
+      color: #FFF;
+    }
+
+    .actGotop {
+      position: fixed;
+      bottom: 50px;
+      right: 50px;
+      width: 150px;
+      height: 195px;
+      display: none;
+      z-index: 100;
+    }
+
+    .actGotop a,
+    .actGotop a:link {
+      width: 150px;
+      height: 195px;
+      display: inline-block;
+      background: url(images/gotop.png) no-repeat;
+      outline: none;
+    }
+
+    .actGotop a:hover {
+      width: 150px;
+      height: 195px;
+      background: url(images/gotop.gif) no-repeat;
+      outline: none;
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+
+  <!-- 返回顶部小火箭 -->
+  <div class="actGotop"><a href="javascript:;" title="Top"></a></div>
+
+  <script src="./jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+
+      //当滚动条到达一定的位置时 显示小火箭，不到当前位置时火箭逐渐消失 淡入淡出
+      //监听滚动条使用
+      $(window).scroll(function () {
+
+        var location = $(window).scrollTop(); //监听当前滚动条的高度,得到的是数值不带单位
+        if (location > 1200) {
+
+          //当location > 1200就让小火箭淡入
+          $('.actGotop').stop().fadeIn(100);
+
+        } else {
+          //就让小火箭淡出
+          $('.actGotop').stop().fadeOut(100);
+        }
+
+
+        //当点击小火箭时让滚动条为0 但是使用自定义动画 因为有动画效果
+        $('.actGotop').click(function () {
+
+          //滚动条为文档的 而不是浏览器的 浏览器是不会动的
+          $('html,body').stop().animate({scrollTop:0})
+
+        })
+
+      })
+    });
+  </script>
+
+</body>
+
+</html>

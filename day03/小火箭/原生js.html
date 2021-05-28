@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body {
+      height: 8000px;
+    }
+
+    a {
+      color: #FFF;
+    }
+
+    .actGotop {
+      position: fixed;
+      bottom: 50px;
+      right: 50px;
+      width: 150px;
+      height: 195px;
+      display: none;
+      z-index: 100;
+    }
+
+    .actGotop a,
+    .actGotop a:link {
+      width: 150px;
+      height: 195px;
+      display: inline-block;
+      background: url(images/gotop.png) no-repeat;
+      outline: none;
+    }
+
+    .actGotop a:hover {
+      width: 150px;
+      height: 195px;
+      background: url(images/gotop.gif) no-repeat;
+      outline: none;
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+
+  <!-- 返回顶部小火箭 -->
+  <div class="actGotop"><a href="javascript:;" title="Top"></a></div>
+
+
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+      //监听系统滚动条 当滚动条大于1200让.actGotop显示出来
+
+    })
+  </script>
+
+</body>
+
+</html>

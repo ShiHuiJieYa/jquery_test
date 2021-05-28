@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 宏[]
+        // 微[ ]
+        // 控制台 111 222 1111 444 555 666 777 888 999
+        // console.log(111);
+
+        const promise = new Promise((resolve, reject) => {
+            resolve();
+            console.log(222);
+        });
+
+        promise.then(() => {
+                console.log(333);
+                return new Promise((resolve) => {
+                    reject();
+                });
+            })
+            .catch(() => {
+                console.log(444);
+            })
+    </script>
+</body>
+
+</html>

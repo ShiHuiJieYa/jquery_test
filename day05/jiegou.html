@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解构</title>
+</head>
+
+<body>
+    <!-- <script src="../jquery-1.12.4.js"></script> -->
+    <div id="box">
+
+    </div>
+    <script>
+        let json = {
+            data: {
+                title: "first",
+                context: "hello world!",
+                footer: "last"
+
+            }
+
+        }
+        let obj = {
+            name: "hello",
+            say: "world"
+        }
+        let {
+            name,
+            say
+        } = obj;
+        console.log(name, say)
+        let str = `<h3>${json.data.title}</h3>
+                   <p>${json.data.context}</p>
+                   <p>${json.data.footer}</p>`
+        document.getElementById("box").innerHTML = str;
+    </script>
+</body>
+
+</html>

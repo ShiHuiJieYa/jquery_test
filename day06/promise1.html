@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise</title>
+</head>
+
+<body>
+    <button>点我</button>
+    <div></div>
+    <script>
+        var oBtn = document.querySelector('button')
+        var oBox = document.querySelector('div')
+
+        function show() {
+            return new Promise((resolve, reject) => {
+
+                setTimeout(() => {
+                    // resolve()
+                    reject("网络异常")
+                }, 1000)
+            })
+
+        }
+        oBtn.onclick = async function () {
+
+            try {
+                await show();
+                let str = `<h2>hello</h2>
+            <h3>world!</h3>
+            `;
+                oBox.innerHTML = str;
+            } catch (err) {
+
+                let str = `<h2>${err}</h2>`;
+                oBox.innerHTML = str;
+            }
+
+        }
+    </script>
+</body>
+
+</html>
