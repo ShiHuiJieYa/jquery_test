@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="height: 20px; width: 10px; color: pink;">haha</div>
+    <div style="height: 70px; width: 70px; color: pink;">haha</div>
+    <div style="height: 60px; width: 50px; color: pink;">haha</div>
+    <script>
+        function traverse() {
+            let dom = [];
+            let yes = [];
+            //把所有的dom元素放在数组dom中
+            if (document.all) {
+                dom = document.all;
+
+            } else {
+
+                dom = document.getElementsByTagName("*");
+            }
+            //遍历查看是否符合条件
+            for (let i = 0; i < dom.length; i++) {
+                console.log(dom);
+                console.log(dom[i].style.width);
+
+                let width = parseFloat(dom[i].style.width) || dom[i].offsetWidth;
+                let height = parseFloat(dom[i].style.height) || dom[i].offsetHeight;
+                if (width >= 50 && height >= 50) {
+
+                    //满足条件的加入到yes数组中
+                    yes.push(dom[i]);
+                }
+
+            };
+
+            return yes;
+        }
+        window.onload = function () {
+            // console.log("-------")
+            // console.log(traverse());
+            traverse();
+
+        }
+    </script>
+</body>
+
+</html>
