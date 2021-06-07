@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="input" />
+    <button id="btn">按钮</button>
+    <span id="span"></span>
+    <script>
+        let oInput = document.getElementById('input');
+        let oBtn = document.getElementById('btn');
+        let oSpan = document.getElementById('span')
+        oBtn.onclick = function () {
+            let value = oInput.value.trim();
+            if (!value) return;
+            const xhr = new XMLHttpRequest();
+            xhr.open('post', 'http://127.0.0.1:5000/test');
+            xhr.setRequestHeader(
+                'content-type',
+                'application/x-www-form-urlencoded'
+            )
+            xhr.send('username=' + value);//请求主体
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        if (xhr.responseText === 'true') {
+                            oSpan.textContent = '用户名不可用'
+                            oSpan.style.color = 'red'
+                        } else {
+                            oSpan.textContent = ''
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>首页</h1>
+  <p id="p">用户名:<%= user.userName %></p>
+  <p><%=message %></p>
+  <%if(flag){%>
+<p>我工作完了</p>
+
+  <%}else{%>
+    <p>我没工作完</p>
+  <% }%>
+  <a href="http://127.0.0.1:5000/detail">点击跳转到详情页面</a>
+</body>
+
+</html>
