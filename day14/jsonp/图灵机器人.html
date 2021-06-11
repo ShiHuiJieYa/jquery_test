@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        .chatbox {
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        .messages {
+            height: 350px;
+            padding: 20px 40px;
+            box-sizing: border-box;
+            border-bottom: 1px solid #ccc;
+            overflow: scroll;
+        }
+
+        .messages h5 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .messages p {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .self {
+            text-align: right;
+        }
+
+        .other {
+            text-align: left;
+        }
+
+        .form {
+            height: 150px;
+        }
+
+        .form .input {
+            height: 110px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .form .btn {
+            height: 40px;
+            box-sizing: border-box;
+            border-top: 1px solid #ccc;
+        }
+
+        .form textarea {
+            display: block;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            border: none;
+            resize: none;
+            outline: none;
+            font-size: 20px;
+        }
+
+        .form input {
+            display: block;
+            width: 100px;
+            height: 30px;
+            margin-top: 5px;
+            margin-right: 20px;
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>高级智能机器人</h3>
+    <div class="chatbox">
+        <!-- 聊天内容 -->
+        <div class="messages">
+            <!-- <div class="self">
+        <h5>我说</h5>
+        <p>你好</p>
+      </div>
+      <div class="other">
+        <h5>对方说</h5>
+        <p>你好</p>
+      </div> -->
+        </div>
+        <div class="form">
+            <div class="input">
+                <textarea></textarea>
+            </div>
+            <div class="btn">
+                <input type="button" value="发送" id="btn" />
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const oMessages = document.querySelector('.messages');
+        const oBtn = document.querySelector('#btn');
+        const oText = document.querySelector('.input textarea');
+        let count = 0; //块作用域
+        //设置发送按钮的的点击事件
+        oBtn.onclick = function () {
+
+            let value = oText.value.trim();
+            if (!value) return;
+            count++;
+            let str = `<div class="self" id=${'self'+count}>
+                          <h5>我说</h5>
+                          <p>${value}</p>
+                        </div>`;
+            oMessages.innerHTML += str;
+            let myselfBox = document.getElementById('self' + count);
+            myselfBox.scrollIntoView();
+            oText.value = ''
+
+
+            //把信息发送给机器人
+            const xhr = new XMLHttpRequest();
+            xhr.open('post', 'http://www.tuling123.com/openapi/api');
+            xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+            xhr.send(`key=14fea1cb5c7549f4b64ee1fef4ff0ff5&info=${value}&userid=335220`);
+            xhr.onreadystatechange = function () {
+
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    let obj = JSON.parse(xhr.responseText)
+                    if (obj.code === 100000) {
+
+                        //普通文本
+                        let str = `<div class="other" id="${'other' + count}">
+                          <h5>对方说</h5>
+                          <p>${obj.text}</p>
+                        </div>`
+                        oMessages.innerHTML += str
+                    } else if (obj.code === 200000) {
+                        // 链接类
+                        let str = `<div class="other" id="${'other' + count}">
+                          <h5>对方说</h5>
+                          <p>${obj.text}</p>
+                          <a href="${obj.url}">点击打开图片</a>
+                        </div>`
+                        oMessages.innerHTML += str
+                    }
+                    let otherBox = document.getElementById('other' + count);
+                    otherBox.scrollIntoView();
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>

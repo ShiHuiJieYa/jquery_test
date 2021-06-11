@@ -14,21 +14,19 @@
     <script src="./myAjax.js"></script>
     <script src="./jquery.js"></script>
     <script>
-        $('#btn').on('click', function () {
-            let mypromise = myAjax({
+        $('#btn').on('click', async function () {
+            let mypromise = await myAjax({
+                // 1.async修饰的函数内部才能使用await关键字
+                // 2. await表达式后面的函数需要返回一个Promise对象
+                // 3. await表达式的结果就是resolve传递过来的参数
                 url: 'http://127.0.0.1:5000/test',
                 data: {
                     name: 'zs',
                     age: 18,
                 },
-                
-                datatype: 'json',
-                success: function (data) {
-
-                    console.log(data);
-                }
 
             })
+            console.log(mypromise);
 
         })
     </script>

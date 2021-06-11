@@ -67,7 +67,7 @@ function myAjax(arg) {
                         //9.3为json 就要转化为json对象的形式
                         value = JSON.parse(value);
                     }
-                    success && success(value);
+                    //success && success(value);
                     resolve(value)
                 }
 

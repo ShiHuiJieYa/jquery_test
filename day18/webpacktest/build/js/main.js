@@ -1,0 +1,1 @@
+!function(){"use strict";var o;o=JSON.parse('{"name":"zs","age":18}'),console.log("a"),console.log(o)}();
