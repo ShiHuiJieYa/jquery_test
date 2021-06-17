@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>网页用户注册</title>
+    <style>
+      #box {
+        width: 800px;
+        height: 600px;
+
+        /* text-align: center; */
+      }
+      #list {
+        width: 600px;
+        list-style: none;
+        margin: 0 auto;
+        text-align: center;
+      }
+      #btn {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+      }
+      #list h4 {
+        text-align: center;
+      }
+
+      #list span {
+        display: inline-block;
+        width: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="">
+      <div id="box">
+        <ul id="list">
+          <li><h4>用户注册</h4></li>
+          <li>用户账号：<input
+              type="text"
+              placeholder="用户名不少于三位"
+              name="acc"
+            />
+            <span></span>
+          </li>
+          <li>
+            用户邮箱：<input
+              type="text"
+              placeholder="如：web@126.com"
+              name="email"
+            /><span></span>
+          </li>
+          <li>
+            手机号码：<input
+              type="text"
+              placeholder="如：13861668188"
+              name="phone"
+            /><span></span>
+          </li>
+          <li>
+            用户密码：<input
+              type="text"
+              placeholder="密码不少于6位"
+              name="pwd"
+            /><span></span>
+          </li>
+          <li>
+            确认密码：<input
+              type="text"
+              placeholder="两次要一致哦"
+              name="rePwd"
+            /><span></span>
+          </li>
+        </ul>
+
+        <button id="btn">注册</button>
+      </div>
+    </form>
+    <script>
+      let oAcc = document.querySelector('input[name=acc]')
+      let oEmail = document.querySelector('input[name=email]')
+      let oPhone = document.querySelector('input[name=phone]')
+      let oPwd = document.querySelector('input[name=pwd]')
+      let oRePwd = document.querySelector('input[name=rePwd]')
+      oAcc.oninput = function () {
+        let value = this.value.trim()
+        let oSpan = this.nextElementSibling
+        let reg = /.{3,}/
+        if (!value) return
+        if (reg.test(value)) {
+          oSpan.textContent = 'ok'
+          oSpan.style.color = 'green'
+          //console.log(1)
+        } else {
+          oSpan.innerHTML = '用户名不少于三位'
+          oSpan.style.color = 'red'
+        }
+      }
+      oEmail.oninput = function () {
+        let value = this.value.trim()
+        let oSpan = this.nextElementSibling
+        let reg =
+          /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/
+        if (!value) return
+        if (reg.test(value)) {
+          oSpan.textContent = 'ok'
+          oSpan.style.color = 'green'
+          //console.log(1)
+        } else {
+          oSpan.innerHTML = '如：web@126.com'
+          oSpan.style.color = 'red'
+        }
+      }
+      oPhone.oninput = function () {
+        let value = this.value.trim()
+        let oSpan = this.nextElementSibling
+        let reg = /^\d{11}$/
+        if (!value) return
+        if (reg.test(value)) {
+          oSpan.textContent = 'ok'
+          oSpan.style.color = 'green'
+          //console.log(1)
+        } else {
+          oSpan.innerHTML = '如：13861668188'
+          oSpan.style.color = 'red'
+        }
+      }
+      oPwd.oninput = function () {
+        let value = this.value.trim()
+        let oSpan = this.nextElementSibling
+        let reg = /.{6,}/
+        if (!value) return
+        if (reg.test(value)) {
+          oSpan.textContent = 'ok'
+          oSpan.style.color = 'green'
+          //console.log(1)
+        } else {
+          oSpan.innerHTML = '密码不少于6位'
+          oSpan.style.color = 'red'
+        }
+      }
+      oRePwd.oninput = function () {
+        let value = this.value.trim()
+        let oSpan = this.nextElementSibling
+        let pwdValue = document.querySelector('input[name=pwd]').value.trim()
+        if (!value) return
+        if (pwdValue === value) {
+          oSpan.textContent = 'ok'
+          oSpan.style.color = 'green'
+          //console.log(1)
+        } else {
+          oSpan.innerHTML = '两次要一致哦'
+          oSpan.style.color = 'red'
+        }
+      }
+    </script>
+  </body>
+</html>

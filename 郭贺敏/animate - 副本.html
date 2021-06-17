@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery动画效果</title>
+    <style>
+      #callboard {
+        width: 600px;
+        /* height: 35px; */
+        /* line-height: 30px; */
+         border: 1px solid black; 
+        /* margin: 0 auto; */
+        /* overflow: hidden; */
+      }
+      #callboard ul {
+        list-style: none;
+ border: 1px solid black; 
+      }
+      #callboard li {
+        margin-top: 10px;
+        /* display: none; */
+      }
+      #callboard li:nth-child(1) {
+        display: block !important;
+      }
+      #box {
+        margin-top: 150px;
+        display: flex;
+        width: 700px;
+        line-height: 40px;
+        justify-content: space-between;
+        list-style: none;
+      }
+
+      /* #right::before {
+        display: block;
+        content: '';
+        border: 10px solid transparent;
+        border-right: 10px solid #fff;
+      } */
+    </style>
+    <p style="color: #dae3f1">jQuery文字单行滚动</p>
+    <div id="callboard">
+      <ul>
+        <li>第一条文字</li>
+        <li>第二条文字</li>
+        <li>第三条文字</li>
+        <li>第四行文字</li>
+      </ul>
+    </div>
+  </head>
+  <body>
+    <script src="./jquery-1.12.4.js"></script>
+    <script type="text/javascript">
+
+    
+       function AutoScroll(obj) {
+         $(obj)
+           .find('ul:first')
+          .animate(
+            {
+              marginTop: '-25px',
+             },
+             500,
+             function () {
+               $(this).css({ marginTop: '0px' }).find('li:first').appendTo(this)
+             }
+           )
+       }
+       $(document).ready(function () {
+         setInterval('AutoScroll("#callboard")', 3000)
+       })
+    </script>
+  </body>
+</html>

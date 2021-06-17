@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>猜数字游戏</title>
+    <style>
+      #box {
+        width: 600px;
+        height: 600px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .green {
+        color: green;
+        font-weight: 700;
+        font-size: 24px;
+      }
+      #btn {
+        display: block;
+        width: 100%;
+        height: 30px;
+        background-color: #007aff;
+        color: #fff;
+      }
+      .con {
+        display: block;
+        width: 100%;
+        height: 35px;
+        border-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <p>请输入1到100之间的数字</p>
+      <p class="green">进入数字游戏↓</p>
+      <p id="tip"></p>
+      <p id="num"></p>
+      <p id="time"></p>
+      <p id="end"></p>
+
+      <p><input type="text" name="con" class="con" /></p>
+      <button id="btn">我猜</button>
+      <a id="re"></a>
+    </div>
+    <script>
+      let num = Math.floor(Math.random() * 100 + 1)
+      let index = 0
+      let oTip = document.getElementById('tip')
+      let sTime = new Date()
+      let oCon = document.querySelector('input[name=con]')
+      let oNum = document.getElementById('num')
+      let oTime = document.getElementById('time')
+      let oEnd = document.getElementById('end')
+      let oRe = document.getElementById('re')
+      //console.log(num)
+      let oBtn = document.getElementById('btn')
+      oBtn.onclick = function () {
+        ++index
+        let value = oCon.value.trim()
+        if(!value)return
+        if (value > num) {
+          oTip.innerHTML = `٩(๑>◡<๑)۶ ，第${index}次输入，您猜的数字${value}有些大了`
+          oTip.style.color = 'blue'
+        } else if (value < num) {
+          oTip.innerHTML = `٩(๑>◡<๑)۶ ，第${index}次输入，您猜的数字${value}有些小了`
+
+          oTip.style.color = 'blue'
+        } else if(value==num){
+          let eTime = new Date()
+          oTip.innerHTML = `٩(๑>◡<๑)۶ ，猜对了，幸运数字是：${value}`
+          oNum.innerHTML = `共输入${index}次`
+          oTime.innerHTML = `用时${(eTime - sTime)/1000}秒`
+          oEnd.innerHTML = 'game over'
+          oRe.innerHTML = '再玩一把'
+          oTip.style.color = 'blue'
+          oNum.style.color = 'blue'
+          oTime.style.color = 'blue'
+          oEnd.style.color = 'blue'
+        }else{
+            oTip.innerHTML='输入的格式不正确'
+            oTip.style.color = 'red'
+            return
+        }
+      }
+
+      oRe.onclick = function () {
+        num = Math.floor(Math.random() * 100 + 1)
+        sTime = new Date()
+        index = 0
+        oTip.innerHTML = ''
+        oNum.innerHTML = ''
+        oTime.innerHTML = ''
+        oEnd.innerHTML = ''
+        oRe.innerHTML = ''
+        oCon.value = ''
+       // console.log(num)
+      }
+    </script>
+  </body>
+</html>
