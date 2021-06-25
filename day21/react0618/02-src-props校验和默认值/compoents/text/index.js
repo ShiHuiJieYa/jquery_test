@@ -8,12 +8,6 @@ export default class Count extends React.Component {
     }
   }
   render() {
-    return (
-      <div>
-        <div style={{ color: 'red' }}>{this.props.count}</div>
-        <div>{this.state.msg}</div>
-        <div>{this.state.data}</div>
-      </div>
-    )
+    return <div style={{ color: 'red' }}>{this.props.count}</div>
   }
 }

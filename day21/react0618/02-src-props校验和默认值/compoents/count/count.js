@@ -13,6 +13,7 @@ export default class Count extends React.Component {
         <div style={{ color: 'red' }}>{this.props.count}</div>
         <div>{this.state.msg}</div>
         <div>{this.state.data}</div>
+        <button className="btn"></button>
       </div>
     )
   }
